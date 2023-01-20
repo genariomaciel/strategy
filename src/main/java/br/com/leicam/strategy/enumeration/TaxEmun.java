@@ -8,11 +8,11 @@ public enum TaxEmun {
     ICMS(2, "ICMS"),
     PIS_COFINS(3, "PIS/COFINS");
 
-    private int code;
+    private int id;
     private String name;
 
-    private TaxEmun (int code, String name) {
-        this.code = code;
+    private TaxEmun (int id, String name) {
+        this.id = id;
         this.name = name;
     }
 }

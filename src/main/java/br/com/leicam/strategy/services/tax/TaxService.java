@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import br.com.leicam.strategy.models.Orcamento;
+import br.com.leicam.strategy.models.Budget;
 import br.com.leicam.strategy.services.interfaces.ITaxService;
 import lombok.RequiredArgsConstructor;
 
@@ -14,10 +14,11 @@ public class TaxService {
 
 	private final Map<String, ITaxService> taxStrategies;
 	
-	public double calcular(Orcamento orcamento) {
-        var tax = orcamento.getTax();
+	public Budget calculate(Budget budget) {
+        var tax = budget.getTax();
         ITaxService strategy = this.taxStrategies.get(tax.getName());
-        return strategy.calcular(orcamento);
+        tax.setValue(strategy.calculate(budget.getValue()));
+        return budget;
 
     }
 }
