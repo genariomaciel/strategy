@@ -8,6 +8,8 @@ import br.com.leicam.strategy.services.interfaces.ITaxService;
 public class PISCOFINS implements ITaxService{
 	@Override
 	public double calculate(double budget) {
+		if (budget < 0.0)
+			throw new RuntimeException("O valor do orçamento não pode ser negativo.");
 		return budget * 0.15;
 	}
 }
