@@ -8,25 +8,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.leicam.strategy.services.interfaces.ITaxService;
-import br.com.leicam.strategy.strategies.taxes.ICMS;
+import br.com.leicam.strategy.strategies.taxes.ISS;
 
 @SpringBootTest
-class ICMSTest {
+class ISSTest {
     
   private ITaxService strategy;
 
   @BeforeEach
   void init() {
-    this.strategy = new ICMS();
+    this.strategy = new ISS();
   }
 
   @Test
   void calculate() {
-    Double expected = 100.0;
+    Double expected = 60.0;
     Double budget = 1000.0;
 
     assertEquals(expected, this.strategy.calculate(budget));
-  
   }
 
   @Test
@@ -37,7 +36,7 @@ class ICMSTest {
     assertEquals(expected, this.strategy.calculate(budget));
 
   }
-
+  
   @Test
   void calculateBudgetNegativo() {
     Double budget = -0.1;
@@ -47,4 +46,5 @@ class ICMSTest {
     assertEquals("O valor do orçamento não pode ser negativo.", exception.getMessage());
 
   }
+
 }

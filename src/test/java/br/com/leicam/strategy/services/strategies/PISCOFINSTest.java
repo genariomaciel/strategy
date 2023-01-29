@@ -8,21 +8,21 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.leicam.strategy.services.interfaces.ITaxService;
-import br.com.leicam.strategy.strategies.taxes.ICMS;
+import br.com.leicam.strategy.strategies.taxes.PISCOFINS;
 
 @SpringBootTest
-class ICMSTest {
+class PISCOFINSTest {
     
   private ITaxService strategy;
 
   @BeforeEach
   void init() {
-    this.strategy = new ICMS();
+    this.strategy = new PISCOFINS();
   }
 
   @Test
   void calculate() {
-    Double expected = 100.0;
+    Double expected = 150.0;
     Double budget = 1000.0;
 
     assertEquals(expected, this.strategy.calculate(budget));
@@ -37,7 +37,7 @@ class ICMSTest {
     assertEquals(expected, this.strategy.calculate(budget));
 
   }
-
+  
   @Test
   void calculateBudgetNegativo() {
     Double budget = -0.1;
