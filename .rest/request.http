@@ -1,0 +1,21 @@
+@host = http://localhost:8080/taxes
+
+GET {{host}} HTTP/1.1
+content-type: application/json
+
+GET {{host}}/all HTTP/1.1
+content-type: application/json
+###
+
+GET {{host}}/icms HTTP/1.1
+content-type: application/json
+###
+
+GET {{host}}/iss HTTP/1.1
+content-type: application/json
+
+###
+GET {{host}}/pis/cofins HTTP/1.1
+content-type: application/json
+
+###
